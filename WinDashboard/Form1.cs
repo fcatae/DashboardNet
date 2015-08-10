@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,7 +21,7 @@ namespace WinDashboard
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AnalyzeUrl("http://www.microsoft.com");
+            AnalyzeUrl("http://localhost:1337");
         }
 
         async Task<string> AnalyzeUrl(string url)
@@ -29,9 +30,11 @@ namespace WinDashboard
 
             client.BaseAddress = new Uri(url);
 
-            var response = await client.GetAsync("/");
+            var response = await client.GetAsync("/api/v2/scan?url=http://www.lab27.com.br");
 
             var content = await response.Content.ReadAsStringAsync();
+
+            dynamic obj = JsonConvert.DeserializeObject(content);
 
             return content;
         }

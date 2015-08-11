@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace WinDashboard
 {
-    class SiteUrl
+    interface ISiteEntry
+    {
+        string url { get; }
+    }
+
+    class SiteUrl : ISiteEntry
     {
         public string url;
 

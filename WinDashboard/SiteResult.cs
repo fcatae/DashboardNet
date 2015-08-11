@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WinDashboard
 {
-    class SiteResult
+    class SiteResult : ISiteEntry
     {
         public string       url;
         public DateTime     scanTime;

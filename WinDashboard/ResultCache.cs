@@ -10,6 +10,7 @@ namespace WinDashboard
     class ResultCache
     {
         List<SiteUrl> m_websites = new List<SiteUrl>();
+        Dictionary<string, int> m_idxWebsiteName = new Dictionary<string, int>();
 
         public IList<SiteUrl> Websites
         {
@@ -34,10 +35,28 @@ namespace WinDashboard
 
                     if (site != "")
                     {
-                        m_websites.Add(new SiteUrl(site));
+                        AddWebsite(site);
                     }
                 }
             }
+        }
+
+        void AddWebsite(string site)
+        {
+            int index = m_websites.Count;
+
+            m_websites.Add(new SiteUrl(site));
+
+            m_idxWebsiteName.Add(site, index);
+        }
+
+        public void Update(SiteResult result)
+        {
+            int index = -1;
+
+            index = m_idxWebsiteName[result.url];
+
+            m_websites[index] = result;
         }
     }
 }

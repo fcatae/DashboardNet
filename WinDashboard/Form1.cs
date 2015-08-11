@@ -14,8 +14,12 @@ namespace WinDashboard
 {
     public partial class Form1 : Form
     {
+        Scanner m_scanner;
+
         public Form1()
         {
+            m_scanner = new Scanner("http://localhost:1337");
+
             InitializeComponent();
         }
 
@@ -30,22 +34,25 @@ namespace WinDashboard
 
             listView1.Items.Add(item);
 
-            //Task analysis = AnalyzeUrl("http://localhost:1337");
+            Task analysis = AnalyzeUrl("http://localhost:1337", "http://www.microsoft.com");
+        }
+                
+        async Task<string> AnalyzeUrl(string scanUrl, string url)
+        {
+            return await m_scanner.AnalyzeUrl(url);            
         }
 
-        async Task<string> AnalyzeUrl(string url)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var client = new HttpClient();
 
-            client.BaseAddress = new Uri(url);
+        }
 
-            var response = await client.GetAsync("/api/v2/scan?url=http://www.lab27.com.br");
-
-            var content = await response.Content.ReadAsStringAsync();
-
-            dynamic obj = JsonConvert.DeserializeObject(content);
-
-            return content;
+        private void listView1_DoubleClick(object sender, EventArgs e)
+        {
+            foreach (var item in listView1.SelectedItems)
+            {
+                MessageBox.Show("selected " + ((ListViewItem)item).Text);
+            }
         }
     }
 }

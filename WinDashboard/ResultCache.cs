@@ -9,12 +9,23 @@ namespace WinDashboard
 {
     class ResultCache
     {
-        List<ISiteEntry> m_websites = new List<ISiteEntry>();
-        Dictionary<string, int> m_idxWebsiteName = new Dictionary<string, int>();
+        List<ISiteEntry> m_websites;
+        Dictionary<string, int> m_idxWebsiteName;
+
+        public ResultCache()
+        {
+            Clear();
+        }
 
         public IList<ISiteEntry> Websites
         {
             get { return m_websites; }
+        }
+
+        public void Clear()
+        {
+            m_websites = new List<ISiteEntry>();
+            m_idxWebsiteName = new Dictionary<string, int>();
         }
 
         public void LoadWebsites(string filename)
@@ -45,9 +56,12 @@ namespace WinDashboard
         {
             int index = m_websites.Count;
 
-            m_websites.Add(new SiteUrl(site));
+            if(!m_idxWebsiteName.ContainsKey(site))
+            {
+                m_websites.Add(new SiteUrl(site));
 
-            m_idxWebsiteName.Add(site, index);
+                m_idxWebsiteName.Add(site, index);
+            }
         }
 
         public void Update(SiteResult result)

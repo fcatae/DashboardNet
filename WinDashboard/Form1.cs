@@ -152,16 +152,39 @@ namespace WinDashboard
 
         private void button4_Click(object sender, EventArgs e)
         {
-            m_cache.Clear();
+            //m_cache.Clear();
             m_cache.LoadResultsCsv("results.csv");
             
+            // some what broken: sometimes it deletes the actual results
             listView1.Items.Clear();
 
             foreach (var site in m_cache.Websites)
             {
                 var item = listView1.Items.Add(site.url);
+                SiteQuickResult result = site as SiteQuickResult;
 
-                UpdateItem(item, site.url, (SiteQuickResult)site);
+                if(result != null)
+                {
+                    UpdateItem(item, site.url, result);
+                }                
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Task task = QuickScan();
+        }
+
+        async Task QuickScan()
+        {
+            foreach (var listitem in listView1.Items)
+            {
+                var item = (ListViewItem)listitem;
+
+                if(item.SubItems.Count < 3 || item.SubItems[2].Text == "")
+                {
+                    await ProcessItemAsync(item);
+                }                
             }
         }
     }

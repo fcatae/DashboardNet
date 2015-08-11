@@ -15,20 +15,19 @@ namespace WinDashboard
     public partial class Form1 : Form
     {
         Scanner m_scanner;
+        ResultCache m_cache;
 
         public Form1()
         {
             m_scanner = new Scanner("http://localhost:1337");
+            m_cache = new ResultCache();
 
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var item = new ListViewItem("www.microsoft.com");
-            listView1.Items.Add(item);
-
-            ProcessItemAsync(item);
+            m_cache.LoadWebsites("websites.csv");
         }
         
         async Task ProcessItemAsync(ListViewItem item)

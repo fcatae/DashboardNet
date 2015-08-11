@@ -28,6 +28,8 @@ namespace WinDashboard
 
             var content = await response.Content.ReadAsStringAsync();
 
+            var res = new SiteResult(content);
+
             dynamic obj = JsonConvert.DeserializeObject(content);
 
             return content;

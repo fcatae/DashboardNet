@@ -73,23 +73,45 @@ namespace WinDashboard
 
                     return;
                 }
-                
-                item.ForeColor = Color.Black;
 
-                item.SubItems.Clear();
-                item.SubItems.Add("");
-                item.SubItems.Add(result.checkBrowserDetectionData.passed.ToString());
-                item.SubItems.Add(result.checkCSSPrefixesData.passed.ToString());
-                item.SubItems.Add(result.checkEdgeData.passed.ToString());
-                item.SubItems.Add(result.checkJsLibsData.passed.ToString());
-                item.SubItems.Add(result.checkPluginFreeData.passed.ToString());
-                item.SubItems.Add(result.checkMarkupData.passed.ToString());
-
-                item.Text = shortUrl;
+                UpdateItem(item, shortUrl, result);
             }
 
         }
 
+        void UpdateItem(ListViewItem item, string shortUrl, SiteResult result)
+        {
+            item.ForeColor = Color.Black;
+
+            item.SubItems.Clear();
+            item.SubItems.Add("");
+            item.SubItems.Add(result.checkBrowserDetectionData.passed.ToString());
+            item.SubItems.Add(result.checkCSSPrefixesData.passed.ToString());
+            item.SubItems.Add(result.checkEdgeData.passed.ToString());
+            item.SubItems.Add(result.checkJsLibsData.passed.ToString());
+            item.SubItems.Add(result.checkPluginFreeData.passed.ToString());
+            item.SubItems.Add(result.checkMarkupData.passed.ToString());
+
+            item.Text = shortUrl;
+
+        }
+
+        void UpdateItem(ListViewItem item, string shortUrl, SiteQuickResult result)
+        {
+            item.ForeColor = Color.Black;
+
+            item.SubItems.Clear();
+            item.SubItems.Add("");
+            item.SubItems.Add(result.checkBrowserDetection.ToString());
+            item.SubItems.Add(result.checkCSSPrefixes.ToString());
+            item.SubItems.Add(result.checkEdge.ToString());
+            item.SubItems.Add(result.checkJsLibs.ToString());
+            item.SubItems.Add(result.checkPluginFree.ToString());
+            item.SubItems.Add(result.checkMarkup.ToString());
+
+            item.Text = shortUrl;
+
+        }
         async Task<SiteResult> AnalyzeUrl(string url)
         {
             SiteResult result;
@@ -130,7 +152,17 @@ namespace WinDashboard
 
         private void button4_Click(object sender, EventArgs e)
         {
+            m_cache.Clear();
             m_cache.LoadResultsCsv("results.csv");
+            
+            listView1.Items.Clear();
+
+            foreach (var site in m_cache.Websites)
+            {
+                var item = listView1.Items.Add(site.url);
+
+                UpdateItem(item, site.url, (SiteQuickResult)site);
+            }
         }
     }
 }

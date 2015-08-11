@@ -54,7 +54,51 @@ namespace WinDashboard
 
         public void LoadResultsCsv(string filename)
         {
+            var columns = new Dictionary<string, int>()
+            {
+                {"url", -1},
+                {"browserDetection", -1},
+                {"cssprefixes", -1},
+                {"edge", -1},
+                {"jslibs", -1},
+                {"pluginfree", -1},
+                {"markup", -1}
+            };
 
+            using (StreamReader reader = new StreamReader(filename))
+            {
+                string headerLine = reader.ReadLine().Replace(" ", "");
+                string[] headers = headerLine.Split(',');
+
+                for(int position=0; position<headers.Length; position++)
+                {
+                    string column_name = headers[position];
+
+                    if(columns.ContainsKey(column_name))
+                    {
+                        columns[column_name] = position;
+                    }
+                }
+
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] data = line.Split(',');
+
+                    SiteQuickResult result = new SiteQuickResult(
+                        data[columns["url"]],
+                        data[columns["browserDetection"]] == "1",
+                        data[columns["cssprefixes"]] == "1",
+                        data[columns["edge"]] == "1",
+                        data[columns["jslibs"]] == "1",
+                        data[columns["pluginfree"]] == "1",
+                        data[columns["markup"]] == "1"
+                        );
+
+                    AddQuickResult(result);
+                }
+            }
+            
         }
         public void ExportResultsCsv(string filename)
         {
@@ -94,6 +138,21 @@ namespace WinDashboard
 
                 m_idxWebsiteName.Add(site, index);
             }
+        }
+
+        public void AddQuickResult(SiteQuickResult result)
+        {
+            int index = -1;
+            string url = result.url;
+
+            if (!m_idxWebsiteName.ContainsKey(url))
+            {
+                AddWebsite(url);
+            }
+
+            index = m_idxWebsiteName[url];
+
+            m_websites[index] = result;
         }
 
         public void Update(SiteResult result)

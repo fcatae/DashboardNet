@@ -21,7 +21,16 @@ namespace WinDashboard
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AnalyzeUrl("http://localhost:1337");
+            string[] items = { "1" , "2"};
+
+            var item = new ListViewItem("1");
+            item.SubItems.Add("2");
+            item.SubItems.Add("3");
+            item.SubItems.Add("4");
+
+            listView1.Items.Add(item);
+
+            //Task analysis = AnalyzeUrl("http://localhost:1337");
         }
 
         async Task<string> AnalyzeUrl(string url)

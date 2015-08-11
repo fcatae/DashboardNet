@@ -1,0 +1,222 @@
+﻿{
+  "url": { "uri": "http://www.lab27.com.br" },
+  "processTime": 6.008,
+  "results": {
+    "browserDetection": {
+      "testName": "browserDetection",
+      "passed": true,
+      "data": {
+        "javascript": {
+          "passed": true,
+          "data": [ ]
+        },
+        "comments": { "passed": true }
+      }
+    },
+    "cssprefixes": {
+      "testName": "cssprefixes",
+      "passed": true,
+      "data": [ ]
+    },
+    "edge": {
+      "testName": "edge",
+      "passed": true,
+      "data": {
+        "lineNumber": 1,
+        "mode": [ "html5" ]
+      }
+    },
+    "jslibs": {
+      "testName": "jslibs",
+      "url": "http://www.lab27.com.br/",
+      "passed": true,
+      "data": [ ]
+    },
+    "pluginfree": {
+      "testName": "pluginfree",
+      "passed": true,
+      "data": [ ]
+    },
+    "markup": {
+      "testName": "markup",
+      "passed": true,
+      "data": [
+        {
+          "element": "div",
+          "threshold": 0.9,
+          "edgeCount": 32,
+          "chromeCount": 32,
+          "passed": true
+        },
+        {
+          "element": "canvas",
+          "threshold": 0.8,
+          "edgeCount": 0,
+          "chromeCount": 0,
+          "passed": true
+        },
+        {
+          "element": "a",
+          "threshold": 0.8,
+          "edgeCount": 91,
+          "chromeCount": 91,
+          "passed": true
+        },
+        {
+          "element": "p",
+          "threshold": 0.7,
+          "edgeCount": 7,
+          "chromeCount": 7,
+          "passed": true
+        },
+        {
+          "element": "h1",
+          "threshold": 0.8,
+          "edgeCount": 0,
+          "chromeCount": 0,
+          "passed": true
+        },
+        {
+          "element": "h2",
+          "threshold": 0.8,
+          "edgeCount": 6,
+          "chromeCount": 6,
+          "passed": true
+        },
+        {
+          "element": "h3",
+          "threshold": 0.8,
+          "edgeCount": 2,
+          "chromeCount": 2,
+          "passed": true
+        },
+        {
+          "element": "h4",
+          "threshold": 0.8,
+          "edgeCount": 0,
+          "chromeCount": 0,
+          "passed": true
+        },
+        {
+          "element": "ol",
+          "threshold": 0.8,
+          "edgeCount": 0,
+          "chromeCount": 0,
+          "passed": true
+        },
+        {
+          "element": "ul",
+          "threshold": 0.8,
+          "edgeCount": 12,
+          "chromeCount": 12,
+          "passed": true
+        },
+        {
+          "element": "li",
+          "threshold": 0.8,
+          "edgeCount": 48,
+          "chromeCount": 48,
+          "passed": true
+        },
+        {
+          "element": "table",
+          "threshold": 0.8,
+          "edgeCount": 0,
+          "chromeCount": 0,
+          "passed": true
+        },
+        {
+          "element": "tr",
+          "threshold": 0.8,
+          "edgeCount": 0,
+          "chromeCount": 0,
+          "passed": true
+        },
+        {
+          "element": "th",
+          "threshold": 0.8,
+          "edgeCount": 0,
+          "chromeCount": 0,
+          "passed": true
+        },
+        {
+          "element": "td",
+          "threshold": 0.8,
+          "edgeCount": 0,
+          "chromeCount": 0,
+          "passed": true
+        },
+        {
+          "element": "img",
+          "threshold": 0.9,
+          "edgeCount": 4,
+          "chromeCount": 4,
+          "passed": true
+        },
+        {
+          "element": "span",
+          "threshold": 0.5,
+          "edgeCount": 31,
+          "chromeCount": 31,
+          "passed": true
+        },
+        {
+          "element": "form",
+          "threshold": 0.8,
+          "edgeCount": 1,
+          "chromeCount": 1,
+          "passed": true
+        },
+        {
+          "element": "input",
+          "threshold": 0.8,
+          "edgeCount": 1,
+          "chromeCount": 1,
+          "passed": true
+        },
+        {
+          "element": "textarea",
+          "threshold": 0.8,
+          "edgeCount": 0,
+          "chromeCount": 0,
+          "passed": true
+        },
+        {
+          "element": "button",
+          "threshold": 0.8,
+          "edgeCount": 1,
+          "chromeCount": 1,
+          "passed": true
+        },
+        {
+          "element": "video",
+          "threshold": 0.8,
+          "edgeCount": 0,
+          "chromeCount": 0,
+          "passed": true
+        },
+        {
+          "element": "audio",
+          "threshold": 0.8,
+          "edgeCount": 0,
+          "chromeCount": 0,
+          "passed": true
+        },
+        {
+          "element": "object",
+          "threshold": 0.8,
+          "edgeCount": 0,
+          "chromeCount": 0,
+          "passed": true
+        },
+        {
+          "element": "embed",
+          "threshold": 0.8,
+          "edgeCount": 0,
+          "chromeCount": 0,
+          "passed": true
+        }
+      ]
+    }
+  }
+}

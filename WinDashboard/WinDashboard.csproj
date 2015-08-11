@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultCache.cs" />
     <Compile Include="Scanner.cs" />
     <Compile Include="SiteResult.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -83,6 +84,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="result.json" />
+    <None Include="websites.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -52,6 +52,10 @@ namespace WinDashboard
             }
         }
 
+        public void LoadResultsCsv(string filename)
+        {
+
+        }
         public void ExportResultsCsv(string filename)
         {
             string HEADER = "url,browserDetection,cssprefixes,edge,jslibs,pluginfree,markup";
@@ -68,12 +72,12 @@ namespace WinDashboard
                     if(result != null)
                     {
                         writer.WriteLine(String.Format(BODY_FORMAT, result.url,
-                            result.checkBrowserDetection.passed ? 1 : 0,
-                            result.checkCSSPrefixes.passed ? 1 : 0,
-                            result.checkEdge.passed ? 1 : 0,
-                            result.checkJsLibs.passed ? 1 : 0,
-                            result.checkPluginFree.passed ? 1 : 0,
-                            result.checkMarkup.passed ? 1 : 0
+                            result.checkBrowserDetectionData.passed ? 1 : 0,
+                            result.checkCSSPrefixesData.passed ? 1 : 0,
+                            result.checkEdgeData.passed ? 1 : 0,
+                            result.checkJsLibsData.passed ? 1 : 0,
+                            result.checkPluginFreeData.passed ? 1 : 0,
+                            result.checkMarkupData.passed ? 1 : 0
                             ));
                     }
                 }

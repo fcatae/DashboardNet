@@ -78,12 +78,12 @@ namespace WinDashboard
 
                 item.SubItems.Clear();
                 item.SubItems.Add("");
-                item.SubItems.Add(result.checkBrowserDetection.passed.ToString());
-                item.SubItems.Add(result.checkCSSPrefixes.passed.ToString());
-                item.SubItems.Add(result.checkEdge.passed.ToString());
-                item.SubItems.Add(result.checkJsLibs.passed.ToString());
-                item.SubItems.Add(result.checkPluginFree.passed.ToString());
-                item.SubItems.Add(result.checkMarkup.passed.ToString());
+                item.SubItems.Add(result.checkBrowserDetectionData.passed.ToString());
+                item.SubItems.Add(result.checkCSSPrefixesData.passed.ToString());
+                item.SubItems.Add(result.checkEdgeData.passed.ToString());
+                item.SubItems.Add(result.checkJsLibsData.passed.ToString());
+                item.SubItems.Add(result.checkPluginFreeData.passed.ToString());
+                item.SubItems.Add(result.checkMarkupData.passed.ToString());
 
                 item.Text = shortUrl;
             }
@@ -126,6 +126,11 @@ namespace WinDashboard
         private void button3_Click(object sender, EventArgs e)
         {
             m_cache.ExportResultsCsv("results.csv");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            m_cache.LoadResultsCsv("results.csv");
         }
     }
 }

@@ -16,13 +16,13 @@ namespace WinDashboard
         public int checkSuccess;
         Dictionary<string, SiteResultCheck>  checklist = new Dictionary<string, SiteResultCheck>();
 
-        public SiteResultCheck checkBrowserDetection;
-        public SiteResultCheck checkCSSPrefixes;
-        public SiteResultCheck checkEdge;
-        public SiteResultCheck checkJsLibs;
-        public SiteResultCheck checkPluginFree;
-        public SiteResultCheck checkMarkup;
-
+        public SiteResultCheck checkBrowserDetectionData;
+        public SiteResultCheck checkCSSPrefixesData;
+        public SiteResultCheck checkEdgeData;
+        public SiteResultCheck checkJsLibsData;
+        public SiteResultCheck checkPluginFreeData;
+        public SiteResultCheck checkMarkupData;
+        
         public SiteResult(string content)
         {
             raw_content = content;
@@ -54,12 +54,12 @@ namespace WinDashboard
                 checkTotal++;
             }
 
-            checkBrowserDetection = checklist["browserDetection"];
-            checkCSSPrefixes = checklist["cssprefixes"];
-            checkEdge = checklist["edge"];
-            checkJsLibs = checklist["jslibs"];
-            checkPluginFree = checklist["pluginfree"];
-            checkMarkup = checklist["markup"];
+            checkBrowserDetectionData = checklist["browserDetection"];
+            checkCSSPrefixesData = checklist["cssprefixes"];
+            checkEdgeData = checklist["edge"];
+            checkJsLibsData = checklist["jslibs"];
+            checkPluginFreeData = checklist["pluginfree"];
+            checkMarkupData = checklist["markup"];
         }
     }
 }

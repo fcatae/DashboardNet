@@ -38,6 +38,14 @@ namespace WinDashboard
 
         }
         
+        async Task ScanWebsitesAsync()
+        {
+            foreach (var item in listView1.Items)
+            {
+                await ProcessItemAsync((ListViewItem)item);
+            }
+        }
+
         async Task ProcessItemAsync(ListViewItem item)
         {
             var shortUrl = item.Text;
@@ -97,6 +105,11 @@ namespace WinDashboard
                 ProcessItemAsync((ListViewItem)item);
                 //MessageBox.Show("selected " + ((ListViewItem)item).Text);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Task task = ScanWebsitesAsync();
         }
     }
 }

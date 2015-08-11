@@ -52,6 +52,34 @@ namespace WinDashboard
             }
         }
 
+        public void ExportResultsCsv(string filename)
+        {
+            string HEADER = "url,browserDetection,cssprefixes,edge,jslibs,pluginfree,markup";
+            string BODY_FORMAT = "{0},{1},{2},{3},{4},{5},{6}";
+
+            using (StreamWriter writer = new StreamWriter(filename))
+            {
+                writer.WriteLine(HEADER);
+
+                foreach (var entry in m_websites)
+                {
+                    var result = entry as SiteResult;
+
+                    if(result != null)
+                    {
+                        writer.WriteLine(String.Format(BODY_FORMAT, result.url,
+                            result.checkBrowserDetection.passed ? 1 : 0,
+                            result.checkCSSPrefixes.passed ? 1 : 0,
+                            result.checkEdge.passed ? 1 : 0,
+                            result.checkJsLibs.passed ? 1 : 0,
+                            result.checkPluginFree.passed ? 1 : 0,
+                            result.checkMarkup.passed ? 1 : 0
+                            ));
+                    }
+                }
+            }
+        }
+
         void AddWebsite(string site)
         {
             int index = m_websites.Count;

@@ -27,6 +27,7 @@ namespace WinDashboard
 
         private void button1_Click(object sender, EventArgs e)
         {
+            m_cache.Clear();
             m_cache.LoadWebsites("websites.csv");
 
             listView1.Items.Clear();
@@ -62,11 +63,7 @@ namespace WinDashboard
 
                 try
                 {
-
-
                     result = await AnalyzeUrl(url);
-
-
                 }
                 catch (Exception exception)
                 {
@@ -124,6 +121,11 @@ namespace WinDashboard
         private void button2_Click(object sender, EventArgs e)
         {
             Task task = ScanWebsitesAsync();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            m_cache.ExportResultsCsv("results.csv");
         }
     }
 }

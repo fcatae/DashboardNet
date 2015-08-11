@@ -22,17 +22,15 @@ namespace WinDashboard
             };
         }
 
-        public async Task<string> AnalyzeUrl(string url)
+        public async Task<SiteResult> AnalyzeUrl(string url)
         {
             var response = await m_client.GetAsync("/api/v2/scan?url=" + url);
 
             var content = await response.Content.ReadAsStringAsync();
 
-            var res = new SiteResult(content);
+            var result = new SiteResult(content);
 
-            dynamic obj = JsonConvert.DeserializeObject(content);
-
-            return content;
+            return result;
         }
     }
 }

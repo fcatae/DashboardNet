@@ -25,33 +25,45 @@ namespace WinDashboard
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string[] items = { "1" , "2"};
-
-            var item = new ListViewItem("1");
-            item.SubItems.Add("2");
-            item.SubItems.Add("3");
-            item.SubItems.Add("4");
-
+            var item = new ListViewItem("www.microsoft.com");
             listView1.Items.Add(item);
 
-            Task analysis = AnalyzeUrl("http://localhost:1337", "http://www.microsoft.com");
+            ProcessItemAsync(item);
         }
-                
-        async Task<string> AnalyzeUrl(string scanUrl, string url)
+        
+        async Task ProcessItemAsync(ListViewItem item)
+        {
+            var shortUrl = item.Text;
+            var url = "http://" + item.Text;
+
+            var result = await AnalyzeUrl(url);
+
+            item.SubItems.Clear();
+            item.SubItems.Add(result.checkBrowserDetection.passed.ToString());
+            item.SubItems.Add(result.checkCSSPrefixes.passed.ToString());
+            item.SubItems.Add(result.checkEdge.passed.ToString());
+            item.SubItems.Add(result.checkJsLibs.passed.ToString());
+            item.SubItems.Add(result.checkPluginFree.passed.ToString());
+            item.SubItems.Add(result.checkMarkup.passed.ToString());
+
+            item.Text = shortUrl;
+        }
+
+        async Task<SiteResult> AnalyzeUrl(string url)
         {
             return await m_scanner.AnalyzeUrl(url);            
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void listView1_DoubleClick(object sender, EventArgs e)
         {
             foreach (var item in listView1.SelectedItems)
             {
-                MessageBox.Show("selected " + ((ListViewItem)item).Text);
+                ProcessItemAsync((ListViewItem)item);
+                //MessageBox.Show("selected " + ((ListViewItem)item).Text);
             }
         }
     }

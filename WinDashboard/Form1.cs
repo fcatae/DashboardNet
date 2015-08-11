@@ -62,7 +62,11 @@ namespace WinDashboard
 
                 try
                 {
+
+
                     result = await AnalyzeUrl(url);
+
+
                 }
                 catch (Exception exception)
                 {
@@ -91,7 +95,18 @@ namespace WinDashboard
 
         async Task<SiteResult> AnalyzeUrl(string url)
         {
-            return await m_scanner.AnalyzeUrl(url);            
+            SiteResult result;
+
+            result = m_cache.TryGetResult(url);
+
+            if (result == null)
+            {
+                result = await m_scanner.AnalyzeUrl(url);
+
+                m_cache.Update(result);
+            }
+
+            return result;       
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -102,8 +117,7 @@ namespace WinDashboard
         {
             foreach (var item in listView1.SelectedItems)
             {
-                ProcessItemAsync((ListViewItem)item);
-                //MessageBox.Show("selected " + ((ListViewItem)item).Text);
+                Task task = ProcessItemAsync((ListViewItem)item);
             }
         }
 

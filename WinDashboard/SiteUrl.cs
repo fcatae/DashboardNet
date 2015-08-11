@@ -13,7 +13,7 @@ namespace WinDashboard
 
     class SiteUrl : ISiteEntry
     {
-        public string url;
+        public string url { get; }
 
         public SiteUrl(string url)
         {

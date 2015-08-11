@@ -9,10 +9,10 @@ namespace WinDashboard
 {
     class ResultCache
     {
-        List<SiteUrl> m_websites = new List<SiteUrl>();
+        List<ISiteEntry> m_websites = new List<ISiteEntry>();
         Dictionary<string, int> m_idxWebsiteName = new Dictionary<string, int>();
 
-        public IList<SiteUrl> Websites
+        public IList<ISiteEntry> Websites
         {
             get { return m_websites; }
         }
@@ -53,10 +53,29 @@ namespace WinDashboard
         public void Update(SiteResult result)
         {
             int index = -1;
+            string url = result.url;
 
-            index = m_idxWebsiteName[result.url];
+            if(!m_idxWebsiteName.ContainsKey(url))
+            {
+                AddWebsite(url);
+            }
+
+            index = m_idxWebsiteName[url];
 
             m_websites[index] = result;
+        }
+
+        public SiteResult TryGetResult(string url)
+        {
+            int index;
+            SiteResult result = null;
+
+            if (m_idxWebsiteName.TryGetValue(url, out index))
+            {
+                result = m_websites[index] as SiteResult;
+            }
+
+            return result;
         }
     }
 }

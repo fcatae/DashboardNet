@@ -9,7 +9,7 @@ namespace WinDashboard
 {
     class SiteResult : ISiteEntry
     {
-        public string       url;
+        public string       url { get; }
         public DateTime     scanTime;
         public string       raw_content;
         public int checkTotal;

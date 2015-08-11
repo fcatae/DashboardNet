@@ -35,9 +35,9 @@ namespace WinDashboard
         {
             var shortUrl = item.Text;
             var url = "http://" + item.Text;
-
+            
             var result = await AnalyzeUrl(url);
-
+            
             item.SubItems.Clear();
             item.SubItems.Add(result.checkBrowserDetection.passed.ToString());
             item.SubItems.Add(result.checkCSSPrefixes.passed.ToString());

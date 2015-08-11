@@ -61,6 +61,8 @@
     <Compile Include="ResultCache.cs" />
     <Compile Include="Scanner.cs" />
     <Compile Include="SiteResult.cs" />
+    <Compile Include="SiteResultCheck.cs" />
+    <Compile Include="SiteUrl.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

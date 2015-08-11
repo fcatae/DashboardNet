@@ -7,13 +7,6 @@ using System.Threading.Tasks;
 
 namespace WinDashboard
 {
-    class SiteResultCheck
-    {
-        public string name;
-        public bool passed;
-        public string data;
-    }
-
     class SiteResult
     {
         public string       url;
